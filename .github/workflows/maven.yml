@@ -26,4 +26,4 @@ jobs:
       run: cd backend && mvn -B package --file pom.xml -DskipTests
       
     - name: Unit tests
-      run: mvn test
+      run: cd backend && mvn test
