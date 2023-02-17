@@ -26,11 +26,21 @@ jobs:
         run: cd backend && mvn -B package --file pom.xml -DskipTests
    job_2:
     runs-on: ubuntu-latest
-    name: tests
+    name: unit
     steps:
       - name: Checkout project
         uses: actions/checkout@v3
         
       - name: Unit tests
         run: cd backend && mvn test
+    needs: job_1
+   job_3:
+    runs-on: ubuntu-latest
+    name: mutation
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+        
+      - name: Mutation tests
+        run: cd backend && mvn test org.pitest:pitest-maven:mutationCoverage
     needs: job_1
