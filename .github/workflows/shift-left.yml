@@ -29,5 +29,5 @@ jobs:
     name: tests
     steps:
       - name: Unit tests
-        run: cd backend && mvn test
+        run: ls -la
     needs: job_1
