@@ -44,3 +44,24 @@ jobs:
       - name: Mutation tests
         run: cd backend && mvn test org.pitest:pitest-maven:mutationCoverage
     needs: job_1
+   job_4:
+    runs-on: ubuntu-latest
+    name: arch
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+        
+      - name: Arch tests
+        run: cd backend && echo "Arch tests execution"
+    needs: job_1
+    
+   job_5:
+     runs-on: ubuntu-latest
+     name: reports
+     steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+        
+      - name: Arch tests
+        run: cd backend && echo "Reports"
+     needs: [job_2,job_3,job_4]
