@@ -28,6 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     name: tests
     steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+        
       - name: Unit tests
         run: ls -la
     needs: job_1
