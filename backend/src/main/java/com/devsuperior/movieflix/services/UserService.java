@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService implements UserDetailsService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+    private static final String USER_NOT_FOUND = "User not found";
 
     @Autowired
     private UserRepository repository;
@@ -31,7 +32,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
         User user = repository.findByEmail(username);
         if(user == null){
-            logger.error("User not found: " + username);
+            logger.error(USER_NOT_FOUND +username);
             throw new UsernameNotFoundException("Email not found");
         }
         logger.info("User found: " + username);
